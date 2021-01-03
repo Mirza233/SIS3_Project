@@ -2,10 +2,10 @@
 <html>
 <head>
 <title>LOGIN FORM</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css">
 </head>
 <body id="body_bg">
-<div <div align="center">
+<div align="center">
 
 <h3>LOGIN FORM</h3>
     <form id="login-form" method="post" action="authen_login.php" >
