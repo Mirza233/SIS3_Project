@@ -16,10 +16,10 @@ $count = mysqli_num_rows($result);
 if ($count == 1){
 
 //echo "Login Credentials verified";
-echo "<script type='text/javascript'>alert('Login Credentials verified')</script>";
+echo "<script type='text/javascript'>alert('Login Credentials verified');window.location.href='index.php'</script>";
 
 }else{
-echo "<script type='text/javascript'>alert('Invalid Login Credentials')</script>";
+echo "<script type='text/javascript'>alert('Invalid Login Credentials');window.location.href='login.php'</script>";
 //echo "Invalid Login Credentials";
 }
 }
