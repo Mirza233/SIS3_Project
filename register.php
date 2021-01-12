@@ -12,7 +12,6 @@
          <label class="control-label"  for="username">Username</label>
          <div class="controls">
             <input type="text" required="required"  id="username" name="username" placeholder="" class="input-xlarge">
-            <p class="help-block">Username can contain any letters or numbers, without spaces</p>
          </div>
       </div>
       <div class="control-group">
@@ -20,7 +19,6 @@
          <label class="control-label" for="email">E-mail</label>
          <div class="controls">
             <input type="text" required = "required" id="email" name="email" placeholder="" class="input-xlarge">
-            <p class="help-block">Please provide your E-mail</p>
          </div>
       </div>
       <div class="control-group">
@@ -28,7 +26,6 @@
          <label class="control-label" for="password">Password</label>
          <div class="controls">
             <input type="password" required = "required" id="password" name="password" placeholder="" class="input-xlarge">
-            <p class="help-block">Password should be at least 6 characters</p>
          </div>
       </div>
       <div class="control-group">
@@ -36,10 +33,20 @@
          <label class="control-label"  for="password_confirm">Password (Confirm)</label>
          <div class="controls">
             <input type="password" id="password_confirm" required = "required" name="password_confirm" placeholder="" class="input-xlarge">
-            <p class="help-block">Please confirm password</p>
          </div>
       </div>
+      <style type="text/css">
+      	select{position: relative;
+      		left: 3%;}
 
+      </style>
+      <div class="control-group" for="role">
+		<label class="control-label" for="role">I am: </label>
+      <select name = "role" value="Role" id="role" >
+      	<option>Student</option>
+      	<option>Landlord</option>
+      </select>
+      </div>
       <div class="control-group">
          <p class="text-justify">
           Already a member? <a href="login.php">Sign in</a>
