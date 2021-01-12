@@ -1,5 +1,6 @@
 <?php  
  require('db_connect.php');
+ session_start();
 
 if (isset($_POST['user_id']) and isset($_POST['user_pass'])){
 	
@@ -14,9 +15,8 @@ $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
 $count = mysqli_num_rows($result);
 
 if ($count == 1){
-
-//echo "Login Credentials verified";
-echo "<script type='text/javascript'>alert('Login Credentials verified');window.location.href='index.php'</script>";
+	$_SESSION['logged_in'] = true;
+    header("Location: home.php");
 
 }else{
 echo "<script type='text/javascript'>alert('Invalid Login Credentials');window.location.href='login.php'</script>";

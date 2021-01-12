@@ -2,9 +2,27 @@
 <html>
 <head>
 <title>LOGIN FORM</title>
-<link rel="stylesheet" type="text/css">
+<!--link rel="stylesheet" type="text/css"-->
+<link rel="stylesheet" href="style.css">
+
 </head>
 <body id="body_bg">
+    <style>
+  body {
+  background-image: url("bck.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: lightgrey;
+}
+
+h3 {
+  background-color: blue;
+  color: white;
+}
+input {
+  position: static;
+}
+</style>
 <div align="center">
 
 <h3>LOGIN FORM</h3>

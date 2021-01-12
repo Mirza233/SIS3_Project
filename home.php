@@ -1,13 +1,17 @@
- <!DOCTYPE html>
+ 
+<?php 
+session_start();
+if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true)
+    header("Location: index.php");?>
+  <!DOCTYPE html>
 <html>
 <head>
 
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
+<link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
 <style>
   body {
@@ -32,14 +36,15 @@ $query = "SELECT * FROM City ORDER BY ID";
 $result = mysqli_query($connection, $query) or die(mysql_error()."[".$query."]");
 ?>
 
-<a href="index.php" class="btn btn-dark">Index Page</a>
+<a href="home.php" class="btn btn-dark">Index Page</a>
 <a href="register.php" class="btn btn-dark">Register</a>
-<a href="login.php" class="btn btn-dark">Login</a>
+<a href="index.php" class="btn btn-dark">Logout</a>
 
 
 <div align="center">
 
-<h3 class="text">Let us Help you find your dream apartment</h3>
+<h3 class="text">You are Logged in as Student</h3>
+
     <form id="login-form" method="post" >
         <table border="0.5" >
             <tr>
@@ -72,10 +77,9 @@ $result = mysqli_query($connection, $query) or die(mysql_error()."[".$query."]")
               <table class="table table-dark">
                 <thead>
                   <tr>
-                    <th scope="col">First</th>
-					<th scope="col">Price[€]</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price[€]</th>
                     <th scope="col">Size[m^2]</th>
-                    <th scope="col">Description</th>
                   </tr>   
                   <?php
             while ($row = mysqli_fetch_array($result)){
@@ -83,13 +87,18 @@ $result = mysqli_query($connection, $query) or die(mysql_error()."[".$query."]")
       <td>'.$row['Name'].'</td>
       <td>'.$row['Price'].'</td>
       <td>'.$row['Size'].'</td>
-      <td>'.$row['Description'].'</td>
-    </tr>';}}
-	?>
+    </tr>';
+ 
+           //echo '<br /> Price: '.$row['Price'];  
+           // echo '<br /> Size: '.$row['Size'];  
+            //Todo: Image, Creator!!!
+            }  
+          
+        }
+
+        ?>
+
     </form>
-		</div>
-
-
-
+    </div>
 </body>
 </html> 
