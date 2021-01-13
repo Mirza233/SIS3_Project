@@ -21,7 +21,9 @@ if ($count == 1){
     }
     else{
 	$_SESSION['logged_in'] = true;
-    $_SESSION['user'] = $ar['username'];
+    $_SESSION['user'] = $ar['ID'];
+    $_SESSION['username'] = $ar['Username'];
+
     $row = $ar['Role_id'];
     if ($row == '1'){
     	$role = 'admin';
