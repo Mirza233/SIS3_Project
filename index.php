@@ -72,7 +72,7 @@ $result = mysqli_query($connection, $query) or die(mysql_error()."[".$query."]")
               <table class="table table-dark">
                 <thead>
                   <tr>
-                    <th scope="col">First</th>
+                    <th scope="col">Name/th>
 					<th scope="col">Price[€]</th>
                     <th scope="col">Size[m^2]</th>
                     <th scope="col">Description</th>

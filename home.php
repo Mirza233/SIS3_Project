@@ -1,4 +1,4 @@
- 
+  
 <?php 
 session_start();
 if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true)
@@ -39,11 +39,16 @@ $result = mysqli_query($connection, $query) or die(mysql_error()."[".$query."]")
 <a href="home.php" class="btn btn-dark">Index Page</a>
 <a href="register.php" class="btn btn-dark">Register</a>
 <a href="index.php" class="btn btn-dark">Logout</a>
-
+<?php if ($_SESSION['role'] == 'admin'){
+  echo '<a href="admin.php" class="btn btn-dark">Admin Page</a>';}?>
+<?php if ($_SESSION['role'] == 'landlord'){
+  echo '<a href="create.php" class="btn btn-dark">Create ad</a>';
+  echo '<a href="edit.php" class="btn btn-dark">Edit your ads</a>';}
+  ?>
 
 <div align="center">
 
-<h3 class="text">You are Logged in as Student</h3>
+<?php echo '<h3 class="text">You are Logged in as '.$_SESSION['role'].'</h3>';?>
 
     <form id="login-form" method="post" >
         <table border="0.5" >

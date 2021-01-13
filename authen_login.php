@@ -15,8 +15,25 @@ $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
 $count = mysqli_num_rows($result);
 
 if ($count == 1){
+    $ar = mysqli_fetch_array($result);
+    if ($ar['banned']=='1'){
+        echo "<script type='text/javascript'>alert('You are banned from using the app due to violation of Terms and Conditions.');window.location.href='login.php'</script>";
+    }
+    else{
 	$_SESSION['logged_in'] = true;
-    header("Location: home.php");
+    $_SESSION['user'] = $ar['username'];
+    $row = $ar['Role_id'];
+    if ($row == '1'){
+    	$role = 'admin';
+    }
+    if ($row == '2'){
+    	$role = 'student';
+    }
+    if ($row == '3'){
+    	$role = 'landlord';
+    }
+    $_SESSION['role'] = $role;
+    header("Location: home.php");}
 
 }else{
 echo "<script type='text/javascript'>alert('Invalid Login Credentials');window.location.href='login.php'</script>";
