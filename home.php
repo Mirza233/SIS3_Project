@@ -85,6 +85,7 @@ $result = mysqli_query($connection, $query) or die(mysql_error()."[".$query."]")
                     <th scope="col">Name</th>
                     <th scope="col">Price[€]</th>
                     <th scope="col">Size[m^2]</th>
+                    <th scope="col">Description</th>
                   </tr>   
                   <?php
             while ($row = mysqli_fetch_array($result)){
@@ -92,11 +93,9 @@ $result = mysqli_query($connection, $query) or die(mysql_error()."[".$query."]")
       <td>'.$row['Name'].'</td>
       <td>'.$row['Price'].'</td>
       <td>'.$row['Size'].'</td>
+      <td>'.$row['Description'].'</td>
     </tr>';
  
-           //echo '<br /> Price: '.$row['Price'];  
-           // echo '<br /> Size: '.$row['Size'];  
-            //Todo: Image, Creator!!!
             }  
           
         }

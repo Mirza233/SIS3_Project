@@ -1,7 +1,10 @@
 <?php 
 session_start();
 if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true)
-    header("Location: index.php");?>
+    header("Location: index.php");
+
+
+?>
   <!DOCTYPE html>
 <html>
 <head>
@@ -63,23 +66,44 @@ $result = mysqli_query($connection, $query) or die(mysql_error()."[".$query."]")
                     <th scope="col">DELETE</th>                  
                 </tr>   
                   <?php
+                  function delete($id){
+					require('db_connect.php');
+					  
+				  	$ban_query = "DELETE FROM `Accommodation` WHERE ID = '$id'";
+				  	mysqli_query($connection, $ban_query) or die(mysqli_error($connection));
+					header("Refresh:0");
+					}
+
+
+
             while ($row = mysqli_fetch_array($result)){
+            	$id = $row['ID'];
+            	$edit_name = $row['Name'];
             echo '<tr>
       <td>'.$row['Name'].'</td>
       <td>'.$row['Price'].'</td>
       <td>'.$row['Size'].'</td>
+      <td><a href="?'.$edit_name.'=true">edit</a></td>
+      <td><a href="?'.$id.'=true">delete</a></td>
     </tr>';
- 
-           //echo '<br /> Price: '.$row['Price'];  
-           // echo '<br /> Size: '.$row['Size'];  
-            //Todo: Image, Creator!!!
-            }  
-          
-        }
+
+        if(isset($_GET[$id])){
+    		delete($id);}
+    	
+	    if(isset($_GET[$edit_name])){
+	    	$_SESSION['Ac_id'] = $row['ID'];
+    		$_SESSION['Name'] = $row['Name'];
+    		$_SESSION['Price'] = $row['Price'];
+    		$_SESSION['Description'] = $row['Description'];
+    		$_SESSION['Size'] = $row['Size'];
+    		$_SESSION['Address'] = $row['Address'];
+    		$_SESSION['City_id'] = $row['City_id'];
+    		echo "<script type='text/javascript'>window.location.href='edit_form.php'</script>";
+    	}
+    }}
 
         ?>
 
     </div>
 </body>
 </html> 
-
